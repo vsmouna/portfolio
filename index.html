@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mouna V S | Backend Engineer</title>
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968885.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Manrope',sans-serif;
+  background:#f5f1ea;
+  color:#161616;
+  overflow-x:hidden;
+  cursor:default;
+}
+
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  width:0%;
+  height:4px;
+  background:linear-gradient(90deg,#ff7a00,#1368ce);
+  z-index:2000;
+}
+
+.cursor-glow{
+  position:fixed;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(19,104,206,0.12), transparent 70%);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:0;
+  transition:transform 0.08s linear;
+}
+
+.hero-particles{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.hero-particles span{
+  position:absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#1368ce;
+  opacity:0.35;
+  animation:particleFloat linear infinite;
+}
+
+@keyframes particleFloat{
+  from{transform:translateY(0px) scale(1);opacity:0;}
+  20%{opacity:0.35;}
+  to{transform:translateY(-900px) scale(1.4);opacity:0;}
+}
+
+.floating-shape{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:0.18;
+  z-index:-1;
+  animation:floatShape 10s ease-in-out infinite;
+}
+
+.shape1{
+  width:260px;
+  height:260px;
+  background:#ffb36b;
+  top:10%;
+  left:-80px;
+}
+
+.shape2{
+  width:320px;
+  height:320px;
+  background:#82b4ff;
+  bottom:10%;
+  right:-120px;
+  animation-delay:-5s;
+}
+
+@keyframes floatShape{
+  0%{transform:translateY(0px) translateX(0px);} 
+  50%{transform:translateY(-30px) translateX(20px);} 
+  100%{transform:translateY(0px) translateX(0px);} 
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(circle at top left, rgba(255,140,66,0.08), transparent 25%),
+  radial-gradient(circle at bottom right, rgba(19,104,206,0.08), transparent 25%);
+  z-index:-1;
+}
+
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:999;
+  padding:1.3rem 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(245,241,234,0.78);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.logo{
+  font-family:'Bebas Neue',sans-serif;
+  letter-spacing:2px;
+  font-size:2rem;
+}
+
+nav ul{
+  display:flex;
+  gap:2rem;
+  list-style:none;
+}
+
+nav a{
+  text-decoration:none;
+  color:#222;
+  font-weight:600;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#ff7a00;
+}
+
+.hero{
+  min-height:100vh;
+  padding:10rem 6% 6rem;
+  display:grid;
+  grid-template-columns:1fr 0.9fr;
+  gap:4rem;
+  align-items:center;
+}
+
+.hero-left h5{
+  color:#ff7a00;
+  letter-spacing:0.15em;
+  margin-bottom:1rem;
+}
+
+.hero-left h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,10vw,8rem);
+  line-height:0.95;
+  letter-spacing:2px;
+  margin-bottom:1.5rem;
+}
+
+.hero-left h1 span{
+  color:#1368ce;
+}
+
+.hero-left p{
+  color:#555;
+  font-size:1.1rem;
+  line-height:1.9;
+  max-width:650px;
+  margin-bottom:2rem;
+}
+
+.cta{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:1rem 1.6rem;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  transition:0.3s;
+}
+
+.btn-primary{
+  background:#161616;
+  color:white;
+}
+
+.btn-primary:hover{
+  transform:translateY(-4px);
+  background:#ff7a00;
+}
+
+.btn-secondary{
+  border:2px solid #161616;
+  color:#161616;
+}
+
+.btn-secondary:hover{
+  background:#161616;
+  color:white;
+}
+
+.hero-right{
+  position:relative;
+}
+
+.editor-card{
+  animation:editorFloat 6s ease-in-out infinite;
+}
+
+@keyframes editorFloat{
+  0%{transform:rotate(-2deg) translateY(0px);} 
+  50%{transform:rotate(-2deg) translateY(-16px);} 
+  100%{transform:rotate(-2deg) translateY(0px);} 
+}
+
+.hero-left h1 span{
+  display:inline-block;
+  transition:0.4s ease;
+}
+
+.skills{
+  position:relative;
+}
+
+.skill{
+  animation:skillPulse 4s ease-in-out infinite;
+}
+
+.skill:nth-child(2){animation-delay:0.3s;}
+.skill:nth-child(3){animation-delay:0.6s;}
+.skill:nth-child(4){animation-delay:0.9s;}
+.skill:nth-child(5){animation-delay:1.2s;}
+.skill:nth-child(6){animation-delay:1.5s;}
+.skill:nth-child(7){animation-delay:1.8s;}
+.skill:nth-child(8){animation-delay:2.1s;}
+.skill:nth-child(9){animation-delay:2.4s;}
+
+@keyframes skillPulse{
+  0%,100%{transform:translateY(0px);} 
+  50%{transform:translateY(-6px);} 
+}
+
+.project-card{
+  background:white;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:0 30px 60px rgba(0,0,0,0.08);
+  transform:rotate(-2deg);
+}
+
+.editor-top{
+  background:#161616;
+  padding:1rem 1.5rem;
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
+}
+
+.dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+}
+
+.red{background:#ff5f57;}
+.yellow{background:#ffbd2f;}
+.green{background:#28ca42;}
+
+.editor-body{
+  padding:2rem;
+}
+
+.code-line{
+  margin-bottom:1rem;
+  font-family:monospace;
+  font-size:0.95rem;
+}
+
+.orange{color:#ff7a00;}
+.blue{color:#1368ce;}
+.greenText{color:#1c9b5f;}
+.gray{color:#666;}
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1.5rem;
+  padding:0 6% 6rem;
+}
+
+.metric-card{
+  background:white;
+  border-radius:26px;
+  padding:2rem;
+  box-shadow:0 15px 40px rgba(0,0,0,0.05);
+  transition:0.35s;
+}
+
+.metric-card:hover{
+  transform:translateY(-8px) rotate(-1deg) scale(1.02);
+}
+
+.metric-card h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:4rem;
+  color:#1368ce;
+}
+
+.metric-card p{
+  color:#555;
+  font-weight:600;
+}
+
+section{
+  padding:6rem 6%;
+}
+
+.section-label{
+  color:#ff7a00;
+  font-weight:800;
+  margin-bottom:1rem;
+  letter-spacing:0.1em;
+}
+
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:4rem;
+  letter-spacing:2px;
+  margin-bottom:3rem;
+}
+
+.about-grid,
+.contact-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1.2rem;
+  align-items:center;
+}
+
+.card{
+  background:white;
+  border-radius:30px;
+  padding:2rem;
+  box-shadow:0 20px 50px rgba(0,0,0,0.05);
+}
+
+.card p{
+  color:#555;
+  line-height:1.9;
+}
+
+.skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem;
+  margin-top:1.5rem;
+}
+
+.skill{
+  display:flex;
+  align-items:center;
+  gap:0.7rem;
+  padding:0.9rem 1.2rem;
+  border-radius:999px;
+  background:white;
+  border:1px solid rgba(0,0,0,0.08);
+  font-weight:700;
+  box-shadow:0 4px 12px rgba(0,0,0,0.04);
+  transition:0.3s ease;
+}
+
+.skill:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 20px rgba(0,0,0,0.08);
+}
+
+.skill-icon{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.skill-icon img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+}
+
+.timeline-item{
+  background:white;
+  border-left:8px solid #1368ce;
+  border-radius:0 24px 24px 0;
+  padding:2rem;
+  box-shadow:0 20px 50px rgba(0,0,0,0.05);
+}
+
+.timeline-item h3{
+  margin-bottom:0.5rem;
+}
+
+.timeline-item h5{
+  color:#ff7a00;
+  margin-bottom:1rem;
+}
+
+.timeline-item p{
+  color:#555;
+  line-height:1.8;
+}
+
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:2rem;
+}
+
+.project-card{
+  background:#161616;
+  color:white;
+  border-radius:30px;
+  padding:2rem;
+  position:relative;
+  overflow:hidden;
+  transition:0.4s;
+}
+
+.project-card::after{
+  content:'';
+  position:absolute;
+  width:220px;
+  height:220px;
+  background:radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+  left:var(--x);
+  top:var(--y);
+  transform:translate(-50%,-50%);
+  opacity:0;
+  transition:opacity 0.3s ease;
+  pointer-events:none;
+}
+
+.project-card:hover::after{
+  opacity:1;
+}
+
+.project-card::before{
+  content:'';
+  position:absolute;
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  background:rgba(255,122,0,0.12);
+  top:-60px;
+  right:-60px;
+}
+
+.project-card:hover{
+  transform:translateY(-10px) scale(1.03) rotate(-1deg);
+}
+
+.project-card h3{
+  margin-bottom:1rem;
+}
+
+.project-card p{
+  color:#d2d2d2;
+  line-height:1.8;
+  margin-bottom:1.5rem;
+}
+
+.stack{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.6rem;
+}
+
+.stack span{
+  padding:0.6rem 0.8rem;
+  background:rgba(255,255,255,0.08);
+  border-radius:999px;
+  font-size:0.85rem;
+}
+
+.awards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+}
+
+.award-card{
+  background:white;
+  padding:2rem;
+  border-radius:30px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.05);
+}
+
+.contact-section{
+  margin-top:2rem;
+}
+
+.contact-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1.2rem;
+}
+
+.contact-link{
+  display:inline-flex;
+  align-items:center;
+  gap:1rem;
+  min-width:220px;
+  justify-content:flex-start;
+  padding:1.5rem 2rem;
+  background:#04113a;
+  color:white;
+  text-decoration:none;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,0.08);
+  transition:0.35s ease;
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
+  font-size:1rem;
+  font-weight:700;
+}
+
+.contact-link:hover{
+  transform:translateY(-5px);
+  background:#08194f;
+}
+
+.contact-link svg{
+  width:28px;
+  height:28px;
+  flex-shrink:0;
+}
+
+.contact-note{
+  margin-top:2.5rem;
+  max-width:760px;
+  color:#5b6475;
+  font-size:1.05rem;
+  line-height:1.9;
+  font-weight:500;
+}
+
+footer{
+  padding:2rem;
+  text-align:center;
+  color:#666;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 0.8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.typing-cursor{
+  display:inline-block;
+  width:10px;
+  height:1.1em;
+  background:#1368ce;
+  margin-left:6px;
+  animation:blink 1s infinite;
+  vertical-align:middle;
+}
+
+@keyframes blink{
+  0%,100%{opacity:1;}
+  50%{opacity:0;}
+}
+
+@media(max-width:900px){
+  .hero,
+  .about-grid,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .metrics{
+    grid-template-columns:1fr 1fr;
+  }
+
+  nav ul{
+    display:none;
+  }
+
+  .hero-left h1{
+    font-size:5rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="floating-shape shape1"></div>
+<div class="floating-shape shape2"></div>
+
+<nav>
+  <div class="logo">MOUNA</div>
+
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+
+<div class="hero-particles">
+  <span style="left:10%; animation-duration:12s; animation-delay:0s;"></span>
+  <span style="left:22%; animation-duration:15s; animation-delay:2s;"></span>
+  <span style="left:36%; animation-duration:18s; animation-delay:1s;"></span>
+  <span style="left:48%; animation-duration:13s; animation-delay:4s;"></span>
+  <span style="left:62%; animation-duration:16s; animation-delay:3s;"></span>
+  <span style="left:78%; animation-duration:14s; animation-delay:5s;"></span>
+  <span style="left:90%; animation-duration:17s; animation-delay:2s;"></span>
+</div>
+
+  <div class="hero-left reveal">
+    <h5>BACKEND ENGINEER · TELECOM AUTOMATION</h5>
+
+    <h1>
+      BUILDING <span id="changingWord">FAST</span><br>
+      DATA SYSTEMS
+    </h1>
+
+    <p>
+      Python Backend Developer and Data Engineer specializing in FastAPI, Kafka, Elasticsearch, multiprocessing, and telecom-scale automation systems.
+    </p>
+
+    <div class="cta">
+      <a href="Mouna_VS_Resume.pdf" class="btn btn-primary" download>Download CV</a>
+      <a href="#contact" class="btn btn-secondary">Contact</a>
+    </div>
+  </div>
+
+  <div class="hero-right reveal">
+    <div class="editor-card">
+
+      <div class="editor-top">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+      </div>
+
+      <div class="editor-body">
+
+        <div class="code-line"><span class="orange">const</span> engineer = {</div>
+        <div class="code-line gray">name: <span class="greenText">"Mouna V S"</span>,</div>
+        <div class="code-line gray">role: <span class="greenText">"Backend Engineer"</span>,</div>
+        <div class="code-line gray">stack: [<span class="greenText">FastAPI</span>, <span class="greenText">Kafka</span>, <span class="greenText">Elastic</span>],</div>
+        <div class="code-line gray">systems: <span class="greenText">"Telecom Automation"</span>,</div>
+        <div class="code-line gray">experience: <span class="blue">3+</span>,</div>
+        <div class="code-line gray">performance: <span class="greenText">"Optimized"</span></div>
+        <div class="code-line">}</div>
+        <div class="code-line"><span class="orange">status:</span> <span class="greenText" id="liveStatus">"Initializing APIs..."</span><span class="typing-cursor"></span></div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="metrics">
+
+  <div class="metric-card reveal">
+    <h2>100+</h2>
+    <p>Reports Generated Daily</p>
+  </div>
+
+  <div class="metric-card reveal">
+    <h2>50%</h2>
+    <p>Faster Report Generation</p>
+  </div>
+
+  <div class="metric-card reveal">
+    <h2>70%</h2>
+    <p>Reduced Manual Work</p>
+  </div>
+
+  <div class="metric-card reveal">
+    <h2>35%</h2>
+    <p>API Response Improved</p>
+  </div>
+
+</section>
+
+<section id="about">
+
+  <div class="section-label reveal">ABOUT</div>
+  <div class="section-title reveal">ENGINEERING SYSTEMS THAT SCALE</div>
+
+  <div class="about-grid">
+
+    <div class="card reveal">
+      <p>
+        Backend Developer and Data Engineer with expertise in designing telecom reporting platforms, scalable APIs, distributed automation systems, and event-driven processing architectures. Experienced in FastAPI, Kafka, Elasticsearch, multiprocessing, and Linux-based deployments.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <h3>Core Stack</h3>
+
+      <div class="skills">
+
+        <div class="skill">
+          <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
+          </div>
+          Python
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg">
+          </div>
+          FastAPI
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg">
+          </div>
+          Kafka
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elasticsearch/elasticsearch-original.svg">
+          </div>
+          Elasticsearch
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">
+            <img src="https://www.vectorlogo.zone/logos/elasticco_logstash/elasticco_logstash-icon.svg">
+          </div>
+          Logstash
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">
+            <img src="https://www.vectorlogo.zone/logos/elasticco_kibana/elasticco_kibana-icon.svg">
+          </div>
+          Kibana
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg">
+          </div>
+          Pandas
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg">
+          </div>
+          NumPy
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg">
+          </div>
+          Linux
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">
+          </div>
+          Git
+        </div>
+
+        <div class="skill">
+          <div class="skill-icon">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg">
+          </div>
+          GitLab
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="experience">
+
+  <div class="section-label reveal">EXPERIENCE</div>
+  <div class="section-title reveal">PROFESSIONAL JOURNEY</div>
+
+  <div class="timeline">
+
+    <div class="timeline-item reveal">
+      <h3>Product Engineer · Backend Developer</h3>
+      <h5>Tata Consultancy Services · Feb 2022 - Present</h5>
+
+      <p>
+        Built scalable FastAPI systems, Kafka-based reporting pipelines, multiprocessing transformation modules, Elasticsearch integrations, and telecom automation workflows delivering high-throughput analytics solutions.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="projects">
+
+  <div class="section-label reveal">PROJECTS</div>
+  <div class="section-title reveal">SYSTEMS & AUTOMATION</div>
+
+  <div class="projects">
+
+    <div class="project-card reveal">
+      <h3>Telecom Reporting Platform</h3>
+
+      <p>
+        SLA-driven reporting engine supporting automated telecom analytics, scheduled workflows, and scalable backend processing.
+      </p>
+
+      <div class="stack shimmer-stack">
+        <span>FastAPI</span>
+        <span>Pandas</span>
+        <span>NumPy</span>
+        <span>Elastic</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <h3>Kafka Event Framework</h3>
+
+      <p>
+        Distributed event-driven architecture using Kafka consumers and multiprocessing workers for high-throughput report processing.
+      </p>
+
+      <div class="stack">
+        <span>Python</span>
+        <span>Pandas</span>
+        <span>NumPy</span>
+        <span>Multiprocessing</span>
+        <span>Kafka</span>
+        <span>Elastic</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <h3>Elastic Analytics Engine</h3>
+
+      <p>
+        Elasticsearch-powered analytics APIs enabling sub-second telecom dashboard responses and optimized aggregation workflows.
+      </p>
+
+      <div class="stack">
+        <span>Python</span>
+        <span>REST APIs</span>
+        <span>Elastic</span>
+        <span>Analytics</span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="section-label reveal">ACHIEVEMENTS</div>
+  <div class="section-title reveal">CERTIFICATIONS & AWARDS</div>
+
+  <div class="awards">
+
+    <div class="award-card reveal">
+      <h3>Google Cloud Associate Engineer</h3>
+      <p>Certified Google Cloud Associate Engineer · 2023</p>
+    </div>
+
+    <div class="award-card reveal">
+      <h3>On-the-Spot Award</h3>
+      <p>Recognized for scalable reporting automation delivery.</p>
+    </div>
+
+    <div class="award-card reveal">
+      <h3>Star Performer Award</h3>
+      <p>Recognized for delivery excellence and customer satisfaction.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="contact">
+
+  <div class="section-label reveal">CONTACT</div>
+  <div class="section-title reveal">LET'S CONNECT</div>
+  <div class="section-detail reveal">Open to backend engineering development, distributed systems, analytics and platform engineering opportunities.</div>
+
+  <div class="contact-section reveal">
+
+    
+
+    <div class="contact-links">
+
+      <a class="contact-link" href="mailto:vsmouna19@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        Email
+      </a>
+
+      <a class="contact-link" href="tel:+917892601492">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.38 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z"/>
+        </svg>
+        Call
+      </a>
+
+      <a class="contact-link" href="https://in.linkedin.com/in/mouna-v-s-0b5656362" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+        LinkedIn
+      </a>
+
+      <a class="contact-link" href="https://github.com/vsmouna" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
+        GitHub
+      </a>
+
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Mouna V S · Hosted on GitHub Pages
+</footer>
+
+<script>
+const cursorGlow = document.getElementById('cursorGlow');
+
+document.addEventListener('mousemove',(e)=>{
+  cursorGlow.style.left = e.clientX + 'px';
+  cursorGlow.style.top = e.clientY + 'px';
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('active');
+    }
+  });
+},{threshold:0.2});
+
+const reveal = document.querySelectorAll('.reveal');
+reveal.forEach(el => observer.observe(el));
+
+const progress = document.getElementById('scrollProgress');
+window.addEventListener('scroll',()=>{
+  const totalHeight = document.body.scrollHeight - window.innerHeight;
+  const progressHeight = (window.pageYOffset / totalHeight) * 100;
+  progress.style.width = progressHeight + '%';
+});
+
+const words = ['FAST','SCALABLE','MODERN','SMART'];
+let wordIndex = 0;
+const changingWord = document.getElementById('changingWord');
+
+setInterval(()=>{
+  wordIndex = (wordIndex + 1) % words.length;
+  changingWord.style.opacity = 0;
+
+  setTimeout(()=>{
+    changingWord.innerText = words[wordIndex];
+    changingWord.style.opacity = 1;
+  },300);
+},2500);
+
+const statusTexts = [
+  '"Initializing APIs..."',
+  '"Kafka Consumers Active"',
+  '"Elastic Cluster Stable"',
+  '"Processing Reports..."',
+  '"System Optimized"'
+];
+
+let statusIndex = 0;
+const liveStatus = document.getElementById('liveStatus');
+
+setInterval(()=>{
+  statusIndex = (statusIndex + 1) % statusTexts.length;
+  liveStatus.style.opacity = 0;
+
+  setTimeout(()=>{
+    liveStatus.innerText = statusTexts[statusIndex];
+    liveStatus.style.opacity = 1;
+  },300);
+},2200);
+
+const metricCards = document.querySelectorAll('.metric-card h2');
+
+metricCards.forEach(counter=>{
+  const target = parseInt(counter.innerText);
+  let count = 0;
+
+  const updateCounter = ()=>{
+    count += target / 60;
+
+    if(count < target){
+      counter.innerText = Math.ceil(count) + (counter.innerText.includes('%') ? '%' : '+');
+      requestAnimationFrame(updateCounter);
+    } else {
+      counter.innerText = target + (counter.innerText.includes('%') ? '%' : '+');
+    }
+  }
+
+  updateCounter();
+});
+
+const cards = document.querySelectorAll('.project-card, .metric-card');
+
+cards.forEach(card=>{
+  card.addEventListener('mouseenter',()=>{
+    card.style.transition = 'transform 0.15s ease';
+  });
+  card.addEventListener('mousemove',(e)=>{
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateY = ((x / rect.width) - 0.5) * 8;
+    const rotateX = ((y / rect.height) - 0.5) * -8;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+  });
+
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform = '';
+  });
+});
+
+const magneticButtons = document.querySelectorAll('.btn, .contact-link');
+
+magneticButtons.forEach(button=>{
+  button.addEventListener('mousemove',(e)=>{
+    const rect = button.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+
+    button.style.transform = `translate(${x*0.12}px, ${y*0.12}px)`;
+  });
+
+  button.addEventListener('mouseleave',()=>{
+    button.style.transform = 'translate(0px,0px)';
+  });
+});
+
+const projectCards = document.querySelectorAll('.project-card');
+
+projectCards.forEach(card=>{
+  card.addEventListener('mousemove',(e)=>{
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    card.style.setProperty('--x', x + 'px');
+    card.style.setProperty('--y', y + 'px');
+  });
+});
+</script>
+
+</body>
+</html>
